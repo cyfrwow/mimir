@@ -19,14 +19,6 @@ var _turndown = _interopRequireDefault(require("turndown"));
 
 var _turndownPluginGfm = require("turndown-plugin-gfm");
 
-var _remarkGfm = _interopRequireDefault(require("remark-gfm"));
-
-var _unified = _interopRequireDefault(require("unified"));
-
-var _remarkParse = _interopRequireDefault(require("remark-parse"));
-
-var _remarkSlate = _interopRequireDefault(require("remark-slate"));
-
 require("./Editor.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -80,10 +72,7 @@ function Editor(_ref) {
         })
       }]);
     } else if (inputFormat === "markdown") {
-      (0, _unified.default)().use(_remarkParse.default).use(_remarkGfm.default).use(_remarkSlate.default).process(initialValue, (err, slateObject) => {
-        if (err) throw err;
-        setValue(slateObject.result);
-      });
+      setValue((0, _slatePlugins.deserializeMD)(editor, initialValue));
     } else if (inputFormat === "slate") {
       setValue(initialValue);
     }
