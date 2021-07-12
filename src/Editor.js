@@ -116,7 +116,7 @@ function Editor({
         plugins={plugins}
         components={components}
         options={options}
-        initialValue={value}
+        value={value}
         editableProps={editableProps}
         onChange={(newValue) => handleOnChange(newValue)}
       />

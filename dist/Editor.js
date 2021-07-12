@@ -118,7 +118,7 @@ function Editor(_ref) {
     plugins: _plugins.default,
     components: components,
     options: options,
-    initialValue: value,
+    value: value,
     editableProps: editableProps,
     onChange: newValue => handleOnChange(newValue)
   }));
